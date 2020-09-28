@@ -1,0 +1,34 @@
+String ( Trim(), string.Join(), StringComparison인자, 스트링포맷 정렬, 숫자형 날짜형 포맷, StringBuilder ), 인코딩(encoding), 파일
+
+
+
+Trim(), TrimEnd(), TrimStart() : 값을 아무것도 주지않으면 앞이나 뒤 아니면 문자열에 공백을 제거( 문자를 파라미터에 주면 그문자를 지워준다)
+
+string.Join() :  string.Join("구분자", 배열명 ) => 배열안의 모든 요소를 포문없이 구분자로 연결
+	      정적메서드라 클래스명으로 호출
+
+Split() : 인스턴스명.Split('구분자') => 문자열을 파라미터의 구분자로 배열안으로 분할해서 넣어줌
+	구분자를 여러개 두고싶을때 char배열을 만들어서 배열을 줘도 가능
+	ex) char[] delimiters = {',', ' ', '-' };
+	    string[] nums = input.Split(delimiters);
+
+StringComparison인자 : EndsWith, IndexOf, StartsWith 메서드에 대소문자를 구분해주는 열거형인자를 추가로 받을수있다 
+		      그게 StringComparison.OrdinalIgnoreCase인자를 함께 전달하면 대소문자를 구분하지 않는다
+		      ex) Console.WriteLine(fruits.IndexOf("Java",StringComparison.OrdinalIgnoreCase))
+
+스트링포맷 정렬 : 번호와 대응되는 문자열의 너비를 지정하고 정렬값이 음수면 왼쪽 양수면 오른쪽 정렬을 한다
+		ex) Console.WriteLine("5 * {0} = {1,2}", i,i * 5); // {1,2) => 2자리로 출력하는데 오른쪽정렬을해라
+
+숫자형 포맷과 날짜형 포맷 : //숫자형 
+			// N : 1000단위로 쉼표 , C : 통화단위 , F : 고정소수점 
+			//날짜형 
+			// d : 단축날짜 , D : 상세날짜 , t : 단축시간 , T : 상세시간
+			Console.WriteLine("날짜 : {0,-20:D}\n판매수량 : {1,15:N}", DateTime.Now, 1234567);
+
+StringBuilder : 문자열의 잦은 변화가 있을때 문자열을 더해야할때 사용
+	       장점 1: 가비지가 안생긴다
+		 2: 속도가 빠르다
+
+encoding : 파일 입출력 , 네트워크 입출력 때 사용( 인코딩과정이 필요함)
+
+파일(File) : 파일은 정적클래스 따라서 File타입에서 제공되는 메서드는 모두 정적메서드 
